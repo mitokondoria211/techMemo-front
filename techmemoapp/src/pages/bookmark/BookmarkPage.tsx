@@ -15,11 +15,8 @@ import AddIcon from "@mui/icons-material/Add";
 import BookmarkCreateDialog from "../../components/bookmark/BookmarkCreateDialog";
 import { useState } from "react";
 import type { BookmarkCreateForm } from "../../schema/schema";
-type BookmarkPageProps = {
-  bookmarkUrl?: string;
-};
 
-const BookmarkPage = ({ bookmarkUrl }: BookmarkPageProps) => {
+const BookmarkPage = () => {
   const { bookmarks, loading, fetchBookmarks, createBookmark } = useBookmark();
   const [open, setOpen] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);

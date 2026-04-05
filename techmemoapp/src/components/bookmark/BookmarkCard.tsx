@@ -22,7 +22,7 @@ type BookmarkCardProps = {
 };
 
 const BookmarkCard = ({ bookmark, onUpdated }: BookmarkCardProps) => {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
