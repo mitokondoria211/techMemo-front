@@ -1,0 +1,17 @@
+export const validationMInMessage = (label: string, min: number) => {
+  return `${label}は${min}以上にしてください`;
+};
+export const validationMaxMessage = (label: string, max: number) => {
+  return `${label}は${max}以内にしてください`;
+};
+export const validationSizeMessage = (
+  label: string,
+  min: number,
+  max: number,
+) => {
+  return `${label}は${min}文字以上${max}文字以内にしてください`;
+};
+
+export const vallidationRequiredMessaege = (label: string) => {
+  return `${label}は必須です`;
+};

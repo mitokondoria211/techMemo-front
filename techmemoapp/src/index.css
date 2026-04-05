@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@layer theme, base, components, utilities;
+
+/* themeだけ読み込む */
+@import "tailwindcss/theme";
+
+/* utilitiesだけ読み込む */
+@import "tailwindcss/utilities";
+
+@layer components {
+  /* Markdown container */
+
+  /* 見出し */
+
+  .cm-editor {
+    border: none !important;
+  }
+
+  .cm-editor.cm-focused {
+    outline: none !important;
+  }
+
+  .cm-editor {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cm-scroller {
+    flex: 1;
+    overflow: auto;
+  }
+
+  .markdown h1 {
+    font-size: 1.5rem; /* h2と同じサイズ */
+    border-left: 3px solid #7f77dd;
+    padding-left: 0.75rem;
+    border-bottom: none;
+  }
+
+  .markdown h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .markdown h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+  }
+
+  .markdown h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.2rem;
+  }
+
+  /* 段落 */
+
+  .markdown p {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* リスト */
+
+  .markdown ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-top: 0.8rem;
+  }
+
+  .markdown ol {
+    list-style: decimal;
+    padding-left: 1.5rem;
+    margin-top: 0.8rem;
+  }
+
+  .markdown li {
+    margin: 0.3rem 0;
+  }
+
+  /* チェックリスト */
+
+  .markdown input[type="checkbox"] {
+    margin-right: 0.4rem;
+  }
+
+  /* 引用 */
+
+  .markdown blockquote {
+    border-left: 4px solid #3b82f6;
+    padding-left: 1rem;
+    color: #555;
+    background: #f8fafc;
+    margin: 1rem 0;
+  }
+
+  /* リンク */
+
+  .markdown a {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+  .markdown a:hover {
+    color: #1d4ed8;
+  }
+
+  /* 画像 */
+
+  .markdown img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+
+  /* コード */
+
+  .markdown code {
+    background: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+
+  /* コードブロック */
+
+  .markdown pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .markdown pre code {
+    background: transparent;
+    padding: 0;
+  }
+
+  /* テーブル */
+
+  .markdown table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+
+  .markdown th,
+  .markdown td {
+    border: 1px solid #e5e7eb;
+    padding: 8px;
+    text-align: left;
+  }
+
+  .markdown th {
+    background: #f9fafb;
+  }
+
+  /* 区切り線 */
+
+  .markdown hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 2rem 0;
+  }
+
+  .markdown {
+    font-size: 16px;
+    line-height: 1.8;
+    padding-top: 10px;
+    word-break: break-word;
+  }
+
+  .markdown p {
+    word-break: break-word;
+  }
+
+  .markdown li {
+    word-break: break-word;
+  }
+
+  .markdown code {
+    word-break: break-word;
+  }
+
+  .markdown pre {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
