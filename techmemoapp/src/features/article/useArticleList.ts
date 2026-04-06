@@ -28,7 +28,6 @@ export const useArticleList = ({ myOnly = true } = {}) => {
 
   const fetchArticles = async () => {
     setLoading(true);
-    await sleep(1000);
     try {
       const response =
         myOnly ?

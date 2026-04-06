@@ -5,7 +5,7 @@ export const formatDate = (date: string | Date) => {
 };
 
 export const formatDateJa = (date: string | Date) => {
-  return format(new Date(date), "yyyy年MM年dd日 HH:mm", {
+  return format(new Date(date), "yyyy年MM月dd日 HH:mm", {
     locale: ja,
   });
 };
