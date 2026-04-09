@@ -100,7 +100,11 @@ const ArticleDetailPage = () => {
                 {article?.content}
               </ReactMarkdown>
             </Typography>
-            <LikeButton likeCount={20} />
+            <LikeButton
+              articleId={Number(id)}
+              likedByMe={article?.likedByme ?? false}
+              likeCount={article?.likeCount ?? 0}
+            />
 
             {article?.urls && article.urls.length > 0 && (
               <>
