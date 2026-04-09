@@ -25,8 +25,10 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { formatDateJa } from "../../util/time";
 import LikeButton from "../../components/LikeButton";
 import { useArticleDetail } from "../../features/article/useArticleDetail";
+import { useAuth } from "../../features/auth/useAuth";
 
 const ArticleDetailPage = () => {
+  const { isAuthenticated } = useAuth();
   const { id } = useParams();
   const { article } = useArticleDetail(Number(id));
   console.log(article);
@@ -100,11 +102,13 @@ const ArticleDetailPage = () => {
                 {article?.content}
               </ReactMarkdown>
             </Typography>
-            <LikeButton
-              articleId={Number(id)}
-              likedByMe={article?.likedByme ?? false}
-              likeCount={article?.likeCount ?? 0}
-            />
+            {isAuthenticated && (
+              <LikeButton
+                articleId={Number(id)}
+                likedByMe={article?.likedByme ?? false}
+                likeCount={article?.likeCount ?? 0}
+              />
+            )}
 
             {article?.urls && article.urls.length > 0 && (
               <>
