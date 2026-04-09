@@ -2,7 +2,7 @@ import { privateApi } from "../../services/axios";
 
 export const likeApi = {
   likeArticle: (articleId: number) =>
-    privateApi.post(`/api/v1/articles/${articleId}/likes`),
+    privateApi.post(`articles/${articleId}/likes`),
   unlikeArticle: (articleId: number) =>
-    privateApi.delete(`/api/v1/articles/${articleId}/likes`),
+    privateApi.delete(`articles/${articleId}/likes`),
 };

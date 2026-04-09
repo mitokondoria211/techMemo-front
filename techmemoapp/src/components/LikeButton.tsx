@@ -23,7 +23,7 @@ const LikeButton = ({
         await likeApi.unlikeArticle(articleId);
         setCount((c) => c - 1);
       } else {
-        await likeApi.unlikeArticle(articleId);
+        await likeApi.likeArticle(articleId);
         setCount((c) => c + 1);
       }
       setLiked(!liked);
