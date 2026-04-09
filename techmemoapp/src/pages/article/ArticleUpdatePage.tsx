@@ -90,7 +90,7 @@ const AriticleUpdatePage = () => {
 
   const urls = useWatch({ control, name: "url" }) ?? [];
 
-  const { createArticle } = useArticleDetail();
+  const { updataArticle } = useArticleDetail();
 
   const initTitleMessage = "タイトルは4文字以上50字以内で入力してください";
   const initArticleMessage = "# 記事を書いてみましょう";
@@ -112,7 +112,7 @@ const AriticleUpdatePage = () => {
     };
     console.log(request);
     try {
-      createArticle(request);
+      updataArticle(Number(id), request);
       setSuccessOpen(true);
     } catch (e) {
       console.error(e);

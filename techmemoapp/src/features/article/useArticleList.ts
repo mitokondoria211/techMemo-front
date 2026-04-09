@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { articleApi } from "./articleApi";
 import type { ArticleResponse, PageResponse } from "../../types/article";
 import { useSearchParams } from "react-router-dom";
-import { sleep } from "../../util/sleep";
 
 export const useArticleList = ({ myOnly = true } = {}) => {
   const [articles, setArticles] = useState<ArticleResponse[]>([]);

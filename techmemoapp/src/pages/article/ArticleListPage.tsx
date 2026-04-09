@@ -232,6 +232,7 @@ const ArticleListPage = ({ myOnly }: ArticleListPageProps) => {
                 </Typography>
               : articles.map((article) => (
                   <ArticleCard
+                    key={article.id}
                     article={article}
                     myOnly={myOnly}
                     onTagClick={handleTagClick}

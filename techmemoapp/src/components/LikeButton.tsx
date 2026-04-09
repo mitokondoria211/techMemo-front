@@ -3,7 +3,10 @@ import { useState } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 type LikeButtonProps = {
+  articleId: number;
   likeCount: number;
+  likedByMe: boolean;
+  onUpdated?: () => void;
 };
 const LikeButton = ({ likeCount }: LikeButtonProps) => {
   const [liked, setLiked] = useState(false);

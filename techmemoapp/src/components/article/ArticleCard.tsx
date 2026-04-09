@@ -67,6 +67,7 @@ const ArticleCard = ({
     await deleteArticle(article.id);
     onUpdated?.();
   };
+
   return (
     <Card
       sx={{
@@ -115,21 +116,6 @@ const ArticleCard = ({
                 </Typography>
               </Box>
             </Stack>
-
-            {/* Summary */}
-            {/* <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{
-              mt: 1,
-              display: "-webkit-box",
-              WebkitLineClamp: 3,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
-            }}
-          >
-            {summary}
-          </Typography> */}
 
             {/* Tags を表示する*/}
             <Stack direction="row" spacing={1} flexWrap="wrap" mt={1}>

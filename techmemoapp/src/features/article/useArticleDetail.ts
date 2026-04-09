@@ -38,7 +38,7 @@ export const useArticleDetail = (id?: number) => {
   };
 
   // 記事更新
-  const updataArticle = async (id: number, data: ArticleRequest) => {
+  const updateArticle = async (id: number, data: ArticleRequest) => {
     try {
       setLoading(true);
       await articleApi.update(id, data);
@@ -74,7 +74,7 @@ export const useArticleDetail = (id?: number) => {
     loading,
     error,
     createArticle,
-    updataArticle,
+    updataArticle: updateArticle,
     updateVisibility,
     deleteArticle,
   };
