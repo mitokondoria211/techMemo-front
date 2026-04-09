@@ -28,7 +28,7 @@ import { useArticleDetail } from "../../features/article/useArticleDetail";
 import { useAuth } from "../../features/auth/useAuth";
 
 const ArticleDetailPage = () => {
-  const { isAuthenticated } = useAuth();
+  const { user } = useAuth();
   const { id } = useParams();
   const { article } = useArticleDetail(Number(id));
   console.log(article);
@@ -102,7 +102,7 @@ const ArticleDetailPage = () => {
                 {article?.content}
               </ReactMarkdown>
             </Typography>
-            {isAuthenticated && (
+            {user && (
               <LikeButton
                 articleId={Number(id)}
                 likedByMe={article?.likedByme ?? false}
