@@ -51,7 +51,7 @@ const ArticleListPage = ({ myOnly }: ArticleListPageProps) => {
   } = useArticleList({ myOnly: myOnly });
   const { categories } = useCategory();
   const { getTagName } = useTag();
-  const [keywordInput, setKeywordInput] = useState<string>(keyword); // ← ページ側で持つ
+  const [keywordInput, setKeywordInput] = useState<string>(keyword);
   console.log(articles);
   const handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
     changePage(value);
@@ -63,7 +63,6 @@ const ArticleListPage = ({ myOnly }: ArticleListPageProps) => {
     setSearchOpen(false);
     resetSearchConditions();
   };
-  // const handleSearchOpen = () =>
 
   if (error) return <div>{error}</div>;
   return (
@@ -194,15 +193,7 @@ const ArticleListPage = ({ myOnly }: ArticleListPageProps) => {
               <Button size="small" onClick={handleResetSearch}>
                 検索条件をクリア
               </Button>
-              {/* <Button
-            size="small"
-            variant="contained"
-            onClick={() => handleSearch(keywordInput)}
-          >
-            検索
-          </Button> */}
             </Stack>
-            {/* <Chip label={formatSearchResult()} size="small" /> */}
           </Box>
         )}
 

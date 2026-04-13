@@ -1,6 +1,7 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const BASE_URL = "https://techmemo-p29y.onrender.com/api/v1";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const api = axios.create({
   baseURL: BASE_URL, // SpringBoot API
@@ -41,13 +42,13 @@ privateApi.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-
+    const navigate = useNavigate();
     // 401かつ未リトライ
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
       try {
-        // 🔥 refreshはapi使う
+        //refreshはapi使う
         const res = await api.post(
           "/auth/refresh-token",
           {},
@@ -58,15 +59,14 @@ privateApi.interceptors.response.use(
 
         localStorage.setItem("accessToken", newToken);
 
-        // 🔥 ヘッダー更新
+        //ヘッダー更新
         originalRequest.headers.Authorization = `Bearer ${newToken}`;
 
-        // 🔥 再リクエスト（これが超重要）
+        //再リクエスト（これが超重要）
         return privateApi(originalRequest);
-      } catch (err) {
-        console.error(err);
+      } catch {
         localStorage.removeItem("accessToken");
-        window.location.href = "/login";
+        navigate("/login");
       }
     }
 

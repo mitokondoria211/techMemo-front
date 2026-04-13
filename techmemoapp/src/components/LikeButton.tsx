@@ -7,12 +7,14 @@ type LikeButtonProps = {
   articleId: number;
   likeCount: number;
   likedByMe: boolean;
+  isLikeDisabled: boolean;
   onUpdated?: () => void;
 };
 const LikeButton = ({
   articleId,
   likeCount,
   likedByMe,
+  isLikeDisabled,
   onUpdated,
 }: LikeButtonProps) => {
   const [liked, setLiked] = useState(likedByMe);
@@ -34,7 +36,7 @@ const LikeButton = ({
   };
   return (
     <Box sx={{ borderRadius: 100 }}>
-      <IconButton onClick={handleLike} color="error">
+      <IconButton onClick={handleLike} color="error" disabled={isLikeDisabled}>
         {liked ?
           <FavoriteIcon />
         : <FavoriteBorderIcon />}

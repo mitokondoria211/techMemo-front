@@ -2,7 +2,7 @@ import z from "zod";
 import {
   validationMaxMessage,
   validationSizeMessage,
-  vallidationRequiredMessaege,
+  validationRequiredMessaege,
 } from "../util/message";
 
 export const loginSchema = z.object({
@@ -85,7 +85,7 @@ export const articleMetaSchema = z.object({
   categoryId: z
     .union([z.number(), z.literal("")])
     .refine((val) => val !== "", {
-      message: vallidationRequiredMessaege("カテゴリー"),
+      message: validationRequiredMessaege("カテゴリー"),
     })
     .transform((val) => Number(val)),
   url: urlsSchema,
@@ -95,18 +95,6 @@ export const articleEditSchema = z.object({
   ...articleContentSchema.shape,
   ...articleMetaSchema.shape,
 });
-
-// export const articleEditSchema = z.object({
-//   title: z
-//     .string()
-//     .trim()
-//     .min(4, validationSizeMessage("タイトル", 4, 100))
-//     .max(100, validationSizeMessage("タイトル", 4, 100)),
-//   tags: tagsInputSchema,
-//   content: z.string().min(10, validationMaxMessage("記事", 10)),
-//   categoryId: z.number().min(1, vallidationRequiredMessaege("カテゴリー")),
-//   url: urlsSchema,
-// });
 
 export type ArticleEditForm = z.infer<typeof articleEditSchema>;
 

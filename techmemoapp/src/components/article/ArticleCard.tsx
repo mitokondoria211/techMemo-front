@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Button,
   Card,
@@ -146,8 +147,16 @@ const ArticleCard = ({
             >
               {/* 自分の記事ではない場合は著者名を表示する */}
               {!myOnly && (
-                <Typography variant="caption">
-                  👤 {article.user.name}
+                <Typography
+                  variant="caption"
+                  display="flex"
+                  alignItems="center"
+                  gap={1}
+                >
+                  <Avatar sx={{ width: 24, height: 24 }}></Avatar>
+                  {article.user.name.length > 15 ?
+                    article.user.name.slice(0, 15) + "..."
+                  : article.user.name}
                 </Typography>
               )}
               <Stack direction="row">

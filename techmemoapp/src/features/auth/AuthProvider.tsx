@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [accessToken, setAccessToken] = useState<string | null>(
     () => localStorage.getItem("accessToken"), // 遅延初期化
   );
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const initAuth = async () => {
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       } catch {
         setUser(null);
       } finally {
-        // setLoading(false);
+        setLoading(false);
       }
     };
 
@@ -59,7 +59,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, isAuthenticated: !!accessToken, login, logout, signUp }}
+      value={{
+        user,
+        isAuthenticated: loading ? null : !!accessToken,
+        login,
+        logout,
+        signUp,
+      }}
     >
       {children}
     </AuthContext.Provider>

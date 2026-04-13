@@ -6,7 +6,7 @@ import SignUpPage from "../pages/auth/SignUpPage";
 // import DashBoardPage from "../pages/dashboard/DashBoardPage";
 import ArticleListPage from "../pages/article/ArticleListPage";
 import ArticleDetailPage from "../pages/article/ArticleDetailPage";
-import AriticleEditPage from "../pages/article/ArticleEditPage";
+import ArticleEditPage from "../pages/article/ArticleEditPage";
 import AriticleUpdatePage from "../pages/article/ArticleUpdatePage";
 import DashboardPage from "../pages/dashboard/DashBoardPage";
 import NotFoundPage from "../pages/NotFoundPage";
@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
         element: <MainLayout />,
         children: [
           { path: "/article/my", element: <ArticleListPage myOnly={true} /> },
-          { path: "/article/edit", element: <AriticleEditPage /> },
+          { path: "/article/edit", element: <ArticleEditPage /> },
           { path: "/article/update/:id", element: <AriticleUpdatePage /> },
           { path: "/bookmark", element: <BookmarkPage /> },
           { path: "/mypage", element: <DashboardPage /> },

@@ -44,26 +44,19 @@ const SignUpPage = () => {
   const toggleShowConfirmPassword = () => setShowConfirmPassword((t) => !t);
 
   const handleFormSubmit = async (data: SignUpForm) => {
-    // e.preventDefault();
     try {
       setLoading(true);
       await signUp(data);
       setLoading(false);
       navigate("/");
-    } catch (err) {
+    } catch {
       setLoading(false);
       setError("root", {
         type: "server",
         message: "認証に失敗しました。",
       });
-      console.error("login faild", err);
     }
   };
-
-  // マウスダウンでフォーカスが外れるのを防ぐ（よくある小技）
-  // const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
-  //   e.preventDefault();
-  // };
 
   return (
     <Container
@@ -175,8 +168,8 @@ const SignUpPage = () => {
               label="確認用パスワード"
               type={showConfirmPassword ? "text" : "password"}
               fullWidth
-              error={!!errors.password}
-              helperText={errors.password?.message}
+              error={!!errors.confirmPassword}
+              helperText={errors.confirmPassword?.message}
               slotProps={{
                 input: {
                   startAdornment: (
@@ -212,88 +205,6 @@ const SignUpPage = () => {
             >
               登録する
             </Button>
-
-            {/* <Stack direction="row" spacing={2} alignItems="center">
-              <KeyIcon />
-              <TextField
-                fullWidth
-                {...register("password")}
-                error={!!errors.password}
-                helperText={errors.password?.message}
-                label="パスワード"
-                variant="outlined"
-                type={showPassword ? "text" : "password"}
-                placeholder="パスワード"
-                slotProps={{
-                  input: {
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label={
-                            showPassword ? "Hide password" : "Show password"
-                          }
-                          onClick={toggleShowPassword}
-                          onMouseDown={handleMouseDown}
-                          edge="end"
-                        >
-                          {showPassword ?
-                            <VisibilityOffIcon />
-                          : <VisibilityIcon />}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  },
-                }}
-              />
-            </Stack>
-            <Stack direction="row" spacing={2} alignItems="center">
-              <CheckCircleOutlineIcon />
-              <TextField
-                fullWidth
-                {...register("confirmPassword")}
-                error={!!errors.confirmPassword}
-                helperText={errors.confirmPassword?.message}
-                label="再確認パスワード"
-                variant="outlined"
-                type={showConfirmPassword ? "text" : "password"}
-                placeholder="再確認パスワード"
-                slotProps={{
-                  input: {
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label={
-                            showConfirmPassword ? "Hide password" : (
-                              "Show password"
-                            )
-                          }
-                          onClick={toggleShowConfirmPassword}
-                          onMouseDown={handleMouseDown}
-                          edge="end"
-                        >
-                          {showConfirmPassword ?
-                            <VisibilityOffIcon />
-                          : <VisibilityIcon />}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  },
-                }}
-              />
-            </Stack> */}
-
-            {/* <Button
-              type="submit"
-              variant="contained"
-              size="large"
-              startIcon={<PersonAddIcon />}
-              sx={{
-                alignSelf: "center",
-                px: 4,
-              }}
-            >
-              新規登録
-            </Button> */}
 
             <Typography textAlign="center" variant="body2">
               <Link

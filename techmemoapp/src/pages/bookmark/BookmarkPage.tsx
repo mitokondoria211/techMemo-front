@@ -33,7 +33,7 @@ const BookmarkPage = () => {
     }
   };
   return (
-    <Container maxWidth={false}>
+    <Container maxWidth="lg">
       <Stack gap={2}>
         <Box display="flex" justifyContent="space-between" my={2}>
           <Typography variant="h2">お気に入りサイト</Typography>

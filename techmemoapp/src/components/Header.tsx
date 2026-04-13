@@ -19,16 +19,6 @@ type HeaderProps = {
   toggleSidebar: () => void;
 };
 
-// const setNavLinks: Array<{ text: string; url: string }> = [
-//   { text: "Top", url: "/" },
-//   { text: "Profile", url: "/profile" },
-//   { text: "Skill", url: "/skill" },
-//   { text: "Production", url: "/production" },
-//   { text: "Contact", url: "/contact" },
-//   { text: "Blog", url: "/blog" },
-//   { text: "Logout", url: "/login" },
-// ];
-
 const Header = ({ user, toggleSidebar }: HeaderProps) => {
   const { logout } = useAuth();
   const navigate = useNavigate();
@@ -108,7 +98,11 @@ const Header = ({ user, toggleSidebar }: HeaderProps) => {
                   sx={{ color: "white", alignItems: "center" }}
                 >
                   <Avatar />
-                  <Typography color="white">{user.name}</Typography>
+                  <Typography color="white">
+                    {user.name.length > 15 ?
+                      user.name.slice(0, 15) + "..."
+                    : user.name}
+                  </Typography>
                   {/* <Typography color="white">
                     hokkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
                   </Typography> */}

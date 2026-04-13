@@ -38,7 +38,6 @@ type ArticleConfirmDialogProps = {
   >;
 };
 
-
 const ArticleConfirmDialog = ({
   open,
   onClose,
@@ -88,7 +87,7 @@ const ArticleConfirmDialog = ({
               justifyContent="space-between"
               gap={3}
             >
-              <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 <Typography variant="body2" color="text.secondary">
                   更新日：{formatDateJa(new Date())}
                 </Typography>

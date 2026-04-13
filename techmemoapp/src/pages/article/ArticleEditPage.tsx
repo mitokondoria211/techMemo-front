@@ -42,7 +42,7 @@ import AddIcon from "@mui/icons-material/Add";
 import ArticleAddUrlDialog from "../../components/article/ArticleAddUrlDialog";
 import { useUnsavedChangesWarning } from "../../hooks/useUnsavedChangesWarning";
 import { useBeforeUnload } from "../../hooks/useBeforeUnload";
-const AriticleEditPage = () => {
+const ArticleEditPage = () => {
   const { categories } = useCategory();
   const [mode, setMode] = useState<"split" | "write" | "preview">("split");
   const [openUrlModal, setOpenUrlModal] = useState(false);
@@ -88,12 +88,10 @@ const AriticleEditPage = () => {
       tagNames: form.tags,
       urls: form.url,
     };
-    console.log(request);
     try {
       createArticle(request);
       setSuccessOpen(true);
-    } catch (e) {
-      console.error(e);
+    } catch {
       setErrorOpen(true);
     }
   };
@@ -347,4 +345,4 @@ const AriticleEditPage = () => {
   );
 };
 
-export default AriticleEditPage;
+export default ArticleEditPage;

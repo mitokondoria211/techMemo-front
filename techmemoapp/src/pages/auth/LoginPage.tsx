@@ -51,13 +51,12 @@ const LoginPage = () => {
       await login(form);
       setLoading(false);
       navigate("/");
-    } catch (err) {
+    } catch {
       setLoading(false);
       setError("root", {
         type: "server",
         message: "認証に失敗しました。",
       });
-      console.error("login faild", err);
     }
   };
 

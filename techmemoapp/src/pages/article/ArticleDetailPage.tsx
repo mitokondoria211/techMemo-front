@@ -31,7 +31,6 @@ const ArticleDetailPage = () => {
   const { user } = useAuth();
   const { id } = useParams();
   const { article } = useArticleDetail(Number(id));
-  console.log(article);
 
   return (
     <Container maxWidth="lg">
@@ -102,13 +101,12 @@ const ArticleDetailPage = () => {
                 {article?.content}
               </ReactMarkdown>
             </Typography>
-            {user && (
-              <LikeButton
-                articleId={Number(id)}
-                likedByMe={article?.likedByme ?? false}
-                likeCount={article?.likeCount ?? 0}
-              />
-            )}
+            <LikeButton
+              articleId={Number(id)}
+              isLikeDisabled={!user || article?.user.id === user?.id}
+              likedByMe={article?.likedByme ?? false}
+              likeCount={article?.likeCount ?? 0}
+            />
 
             {article?.urls && article.urls.length > 0 && (
               <>

@@ -74,7 +74,6 @@ const AriticleUpdatePage = () => {
   useUnsavedChangesWarning(formState.isDirty);
 
   useEffect(() => {
-    console.log(article);
     if (article) {
       reset({
         title: article.title,
@@ -83,10 +82,8 @@ const AriticleUpdatePage = () => {
         tags: article.tags.map((tag) => tag.name).join(", "),
         url: article.urls,
       });
-      console.log(article.tags.map((tag) => tag.name).join(", "));
     }
   }, [article, reset]);
-  console.log(article);
 
   const urls = useWatch({ control, name: "url" }) ?? [];
 
@@ -110,12 +107,10 @@ const AriticleUpdatePage = () => {
       tagNames: form.tags,
       urls: form.url,
     };
-    console.log(request);
     try {
       updataArticle(Number(id), request);
       setSuccessOpen(true);
-    } catch (e) {
-      console.error(e);
+    } catch {
       setErrorOpen(true);
     }
   };
