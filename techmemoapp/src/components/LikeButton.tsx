@@ -32,7 +32,7 @@ const LikeButton = ({
       setLiked(!liked);
       onUpdated?.();
     } catch {
-      console.error("liked error");
+      alert("操作に失敗しました。");
     }
   };
   return (

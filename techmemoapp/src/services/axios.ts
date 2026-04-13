@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -42,7 +41,6 @@ privateApi.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    const navigate = useNavigate();
     // 401かつ未リトライ
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
@@ -66,7 +64,7 @@ privateApi.interceptors.response.use(
         return privateApi(originalRequest);
       } catch {
         localStorage.removeItem("accessToken");
-        navigate("/login");
+        window.location.href = "/login";
       }
     }
 

@@ -8,7 +8,7 @@ export const useTag = () => {
   const [error, setError] = useState<string | null>(null);
 
   //記事一覧を取得
-  const fetchCategories = async () => {
+  const fetchTags = async () => {
     setLoading(true);
     try {
       const response = await tagApi.getAll();
@@ -26,7 +26,7 @@ export const useTag = () => {
     tags.find((c) => c.id === id)?.name ?? "不明";
 
   useEffect(() => {
-    fetchCategories();
+    fetchTags();
   }, []);
 
   return {

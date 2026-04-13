@@ -44,7 +44,7 @@ import ArticleAddUrlDialog from "../../components/article/ArticleAddUrlDialog";
 import { useUnsavedChangesWarning } from "../../hooks/useUnsavedChangesWarning";
 import { useBeforeUnload } from "../../hooks/useBeforeUnload";
 
-const AriticleUpdatePage = () => {
+const ArticleUpdatePage = () => {
   // const [tagListText, setTagListText] = useState("");
   const { id } = useParams();
   const { article, updataArticle } = useArticleDetail(Number(id));
@@ -362,4 +362,4 @@ const AriticleUpdatePage = () => {
   );
 };
 
-export default AriticleUpdatePage;
+export default ArticleUpdatePage;

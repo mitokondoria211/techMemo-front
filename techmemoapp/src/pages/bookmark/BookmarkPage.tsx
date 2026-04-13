@@ -23,7 +23,6 @@ const BookmarkPage = () => {
   const [errorOpen, setErrorOpen] = useState(false);
   const handleCreateSubmit = async (data: BookmarkCreateForm) => {
     try {
-      console.log(data);
       await createBookmark(data);
       await fetchBookmarks(); // 一覧を再取得
       setSuccessOpen(true);

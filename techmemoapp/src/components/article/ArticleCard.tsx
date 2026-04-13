@@ -49,7 +49,6 @@ const ArticleCard = ({
   const handleTogglePublish = async () => {
     if (loading) return;
     await updateVisibility(article.id, !article.publicFlag);
-    console.log(article.publicFlag);
     onUpdated?.(); // ← 親に通知
   };
 

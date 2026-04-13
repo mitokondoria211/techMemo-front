@@ -7,7 +7,7 @@ import SignUpPage from "../pages/auth/SignUpPage";
 import ArticleListPage from "../pages/article/ArticleListPage";
 import ArticleDetailPage from "../pages/article/ArticleDetailPage";
 import ArticleEditPage from "../pages/article/ArticleEditPage";
-import AriticleUpdatePage from "../pages/article/ArticleUpdatePage";
+import ArticleUpdatePage from "../pages/article/ArticleUpdatePage";
 import DashboardPage from "../pages/dashboard/DashBoardPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import BookmarkPage from "../pages/bookmark/BookmarkPage";
@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
         children: [
           { path: "/article/my", element: <ArticleListPage myOnly={true} /> },
           { path: "/article/edit", element: <ArticleEditPage /> },
-          { path: "/article/update/:id", element: <AriticleUpdatePage /> },
+          { path: "/article/update/:id", element: <ArticleUpdatePage /> },
           { path: "/bookmark", element: <BookmarkPage /> },
           { path: "/mypage", element: <DashboardPage /> },
           { path: "*", element: <NotFoundPage /> },
