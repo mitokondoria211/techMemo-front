@@ -79,6 +79,7 @@ const ArticleDetailPage = () => {
               {article?.category && (
                 <Box>
                   <Chip
+                    key={article.category.id}
                     label={article.category.name}
                     sx={{ mr: 1 }}
                     size="small"

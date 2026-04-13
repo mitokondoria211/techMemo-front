@@ -13,17 +13,21 @@ export const useBookmark = () => {
       const response = await bookmarkApi.getAll();
       const data = response.data;
       setBookmarks(data);
-    } catch (e) {
+    } catch {
       setError("取得に失敗しました");
-      console.error(e);
     } finally {
       setLoading(false);
     }
   };
 
   const fetchBookmarksCount = async () => {
-    const response = await bookmarkApi.getAllCount();
-    return response.data;
+    try {
+      const response = await bookmarkApi.getAllCount();
+      return response.data;
+    } catch {
+      setError("取得に失敗しました");
+      return null;
+    }
   };
 
   const createBookmark = async (request: BookmarkRequest) => {
@@ -43,6 +47,7 @@ export const useBookmark = () => {
       throw e;
     }
   };
+
   const deleteBookmark = async (id: number) => {
     try {
       await bookmarkApi.delete(id);

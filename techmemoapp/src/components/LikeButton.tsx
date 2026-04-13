@@ -19,6 +19,7 @@ const LikeButton = ({
 }: LikeButtonProps) => {
   const [liked, setLiked] = useState(likedByMe);
   const [count, setCount] = useState(likeCount);
+
   const handleLike = async () => {
     try {
       if (liked) {

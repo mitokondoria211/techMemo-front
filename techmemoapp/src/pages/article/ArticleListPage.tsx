@@ -52,7 +52,6 @@ const ArticleListPage = ({ myOnly }: ArticleListPageProps) => {
   const { categories } = useCategory();
   const { getTagName } = useTag();
   const [keywordInput, setKeywordInput] = useState<string>(keyword);
-  console.log(articles);
   const handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
     changePage(value);
   };

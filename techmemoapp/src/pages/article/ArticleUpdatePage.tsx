@@ -47,7 +47,7 @@ import { useBeforeUnload } from "../../hooks/useBeforeUnload";
 const AriticleUpdatePage = () => {
   // const [tagListText, setTagListText] = useState("");
   const { id } = useParams();
-  const { article } = useArticleDetail(Number(id));
+  const { article, updataArticle } = useArticleDetail(Number(id));
 
   const { categories } = useCategory();
   const [mode, setMode] = useState<"split" | "write" | "preview">("split");
@@ -87,8 +87,6 @@ const AriticleUpdatePage = () => {
 
   const urls = useWatch({ control, name: "url" }) ?? [];
 
-  const { updataArticle } = useArticleDetail();
-
   const initTitleMessage = "タイトルは4文字以上50字以内で入力してください";
   const initArticleMessage = "# 記事を書いてみましょう";
   const initTagListMessage =
@@ -97,7 +95,7 @@ const AriticleUpdatePage = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<z.output<typeof articleEditSchema>> = (
+  const onSubmit: SubmitHandler<z.output<typeof articleEditSchema>> = async (
     form,
   ) => {
     const request: ArticleRequest = {
@@ -108,7 +106,7 @@ const AriticleUpdatePage = () => {
       urls: form.url,
     };
     try {
-      updataArticle(Number(id), request);
+      await updataArticle(Number(id), request);
       setSuccessOpen(true);
     } catch {
       setErrorOpen(true);

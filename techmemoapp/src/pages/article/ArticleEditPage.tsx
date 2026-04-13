@@ -78,7 +78,7 @@ const ArticleEditPage = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<z.output<typeof articleEditSchema>> = (
+  const onSubmit: SubmitHandler<z.output<typeof articleEditSchema>> = async (
     form,
   ) => {
     const request: ArticleRequest = {
@@ -89,7 +89,7 @@ const ArticleEditPage = () => {
       urls: form.url,
     };
     try {
-      createArticle(request);
+      await createArticle(request);
       setSuccessOpen(true);
     } catch {
       setErrorOpen(true);
