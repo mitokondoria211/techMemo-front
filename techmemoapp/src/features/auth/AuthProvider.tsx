@@ -22,11 +22,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         );
 
         localStorage.setItem("accessToken", res.data.accessToken);
+        setAccessToken(res.data.accessToken);
 
         const userRes = await privateApi.get("/auth/me");
         setUser(userRes.data);
       } catch {
         setUser(null);
+        setAccessToken(null);
+        localStorage.removeItem("accessToken");
       } finally {
         setLoading(false);
       }
