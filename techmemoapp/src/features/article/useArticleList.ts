@@ -24,7 +24,7 @@ export const useArticleList = ({ myOnly = true } = {}) => {
   const keyword = searchParams.get("keyword") ?? "";
   const tagId =
     searchParams.get("tagId") ? Number(searchParams.get("tagId")) : null;
-
+  const sort = searchParams.get("sort") ?? "";
   const fetchArticles = async () => {
     setLoading(true);
     try {
@@ -36,6 +36,7 @@ export const useArticleList = ({ myOnly = true } = {}) => {
             categoryId: categoryId ?? undefined, // ✅ URLから読む
             keyword: keyword || undefined, // ✅ URLから読む
             tagId: tagId ?? undefined, // ✅ URLから読む
+            sort: sort ?? "createdAt,desc",
           })
         : await articleApi.search({
             page: page - 1, // ✅ URLから読む
@@ -43,6 +44,7 @@ export const useArticleList = ({ myOnly = true } = {}) => {
             categoryId: categoryId ?? undefined, // ✅ URLから読む
             keyword: keyword || undefined, // ✅ URLから読む
             tagId: tagId ?? undefined, // ✅ URLから読む
+            sort: sort ?? "createdAt,desc",
           });
 
       const data: PageResponse<ArticleResponse> = response.data;
@@ -104,6 +106,7 @@ export const useArticleList = ({ myOnly = true } = {}) => {
       prev.delete("tagId");
       prev.delete("categoryId");
       prev.delete("keyword");
+      prev.delete("sort");
       prev.set("page", "1");
       return prev;
     });
@@ -113,6 +116,14 @@ export const useArticleList = ({ myOnly = true } = {}) => {
     setSearchParams((prev) => {
       if (id) prev.set("categoryId", String(id));
       else prev.delete("categoryId");
+      prev.set("page", "1");
+      return prev;
+    });
+  };
+
+  const handleSortChange = (value: string) => {
+    setSearchParams((prev) => {
+      prev.set("sort", value);
       prev.set("page", "1");
       return prev;
     });
@@ -146,15 +157,16 @@ export const useArticleList = ({ myOnly = true } = {}) => {
     changePage,
     categoryId,
     keyword,
+    sort,
     formatSearchResult,
     fetchMyArticlesCount,
     fetchMyArticlesCountAndPrivate,
     fetchMyRecentArticles,
-    // getMyArticles,
     fetchArticles,
     setCategoryId,
     handleSearch,
     handleTagClick,
+    handleSortChange,
     clearTagId,
     resetSearchConditions,
     tagId,

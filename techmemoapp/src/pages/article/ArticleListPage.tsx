@@ -40,6 +40,7 @@ const ArticleListPage = ({ myOnly }: ArticleListPageProps) => {
     keyword,
     categoryId,
     tagId,
+    sort,
     fetchArticles,
     clearTagId,
     changePage,
@@ -48,6 +49,7 @@ const ArticleListPage = ({ myOnly }: ArticleListPageProps) => {
     handleTagClick,
     formatSearchResult,
     resetSearchConditions,
+    handleSortChange,
   } = useArticleList({ myOnly: myOnly });
   const { categories } = useCategory();
   const { getTagName } = useTag();
@@ -107,7 +109,7 @@ const ArticleListPage = ({ myOnly }: ArticleListPageProps) => {
             alignItems="center"
             mb={2}
           >
-            <Stack direction="row" gap={2}>
+            <Stack direction="row" gap={2} alignItems="center" flexWrap="wrap">
               <TextField
                 placeholder="キーワードで検索"
                 size="small"
@@ -171,7 +173,38 @@ const ArticleListPage = ({ myOnly }: ArticleListPageProps) => {
                   ))}
                 </Select>
               </FormControl>
+
+              <FormControl size="small" sx={{ minWidth: 150 }}>
+                <InputLabel sx={{ fontSize: 14 }}>並び替え</InputLabel>
+                <Select
+                  value={sort}
+                  label="並び替え"
+                  onChange={(e) => handleSortChange(e.target.value)}
+                  sx={{
+                    height: 32,
+                    "& .MuiSelect-select": {
+                      display: "flex",
+                      alignItems: "center",
+                      height: "100%",
+                      padding: "0 8px",
+                      fontSize: 14,
+                    },
+                  }}
+                >
+                  <MenuItem value="createdAt,desc">新着順</MenuItem>
+                  {/* <MenuItem value="">人気順</MenuItem> */}
+                  <MenuItem value="updatedAt,desc">更新順</MenuItem>
+                </Select>
+              </FormControl>
               {/* // 選択中タグの表示 + 解除ボタン */}
+
+              <IconButton
+                size="small"
+                sx={{ color: "black" }}
+                onClick={() => handleSearch(keywordInput)}
+              >
+                <SearchIcon />
+              </IconButton>
               {tagId && (
                 <Box display="flex" alignItems="center" justifyContent="center">
                   <Chip
@@ -182,13 +215,6 @@ const ArticleListPage = ({ myOnly }: ArticleListPageProps) => {
                   />
                 </Box>
               )}
-              <IconButton
-                size="small"
-                sx={{ color: "black" }}
-                onClick={() => handleSearch(keywordInput)}
-              >
-                <SearchIcon />
-              </IconButton>
               <Button size="small" onClick={handleResetSearch}>
                 検索条件をクリア
               </Button>

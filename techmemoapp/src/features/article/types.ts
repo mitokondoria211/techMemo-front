@@ -39,4 +39,5 @@ export interface ArticleSearchParams {
   tagId?: number;
   page: number;
   size: number;
+  sort: string;
 }
