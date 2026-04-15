@@ -50,15 +50,6 @@ const BookmarkCard = ({ bookmark, onUpdated }: BookmarkCardProps) => {
   return (
     <Paper>
       <Card sx={{ height: 120 }}>
-        {/* <CardHeader
-          title={bookmark.title}
-          subheader={bookmark.memo}
-          action={
-            <IconButton onClick={handleMenuOpen}>
-              <MoreVertIcon />
-            </IconButton>
-          }
-        /> */}
         <CardContent>
           <Box display="flex" justifyContent="space-between">
             <Typography variant="h6">
@@ -75,7 +66,9 @@ const BookmarkCard = ({ bookmark, onUpdated }: BookmarkCardProps) => {
               <MoreVertIcon />
             </IconButton>
           </Box>
-          <Typography variant="body1">{bookmark.memo}</Typography>
+          <Typography variant="body1" sx={{ overflowWrap: "anywhere" }}>
+            {bookmark.memo}
+          </Typography>
         </CardContent>
         <Menu
           anchorEl={anchorEl}

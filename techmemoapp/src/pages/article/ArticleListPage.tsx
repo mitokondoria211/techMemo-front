@@ -153,7 +153,7 @@ const ArticleListPage = ({ myOnly }: ArticleListPageProps) => {
                     const val = e.target.value;
                     setCategoryId(val);
                   }}
-                  displayEmpty
+                  // displayEmpty
                   sx={{
                     height: 32,
                     "& .MuiSelect-select": {
@@ -174,7 +174,10 @@ const ArticleListPage = ({ myOnly }: ArticleListPageProps) => {
                 </Select>
               </FormControl>
 
-              <FormControl size="small" sx={{ minWidth: 150 }}>
+              <FormControl
+                size="small"
+                sx={{ minWidth: 150, bgcolor: "background.paper" }}
+              >
                 <InputLabel sx={{ fontSize: 14 }}>並び替え</InputLabel>
                 <Select
                   value={sort}

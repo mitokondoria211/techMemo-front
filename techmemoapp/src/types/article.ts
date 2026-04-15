@@ -57,6 +57,7 @@ export interface ArticleRequest {
   categoryId: number;
   tagNames: string[];
   urls: UrlRequest[];
+  publicFlag: boolean;
 }
 
 export interface PageResponse<T> {

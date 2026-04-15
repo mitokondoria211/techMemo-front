@@ -20,13 +20,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           {},
           { withCredentials: true },
         );
-
         localStorage.setItem("accessToken", res.data.accessToken);
-
-        const userRes = await privateApi.get("/auth/me");
+        setAccessToken(res.data.accessToken);
+        const userRes = await privateApi.get("/user/me");
         setUser(userRes.data);
       } catch {
         setUser(null);
+        setAccessToken(null);
+        localStorage.removeItem("accessToken");
       } finally {
         setLoading(false);
       }

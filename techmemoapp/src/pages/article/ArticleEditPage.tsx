@@ -49,6 +49,7 @@ const ArticleEditPage = () => {
   const [openPreview, setOpenPreview] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
   const [errorOpen, setErrorOpen] = useState(false);
+  const [pendingPublicFlag, setPendingPublicFlag] = useState(false);
   const { handleSubmit, control, setValue, formState } = useForm<
     z.input<typeof articleEditSchema>, // input: tags は string
     undefined,
@@ -87,6 +88,7 @@ const ArticleEditPage = () => {
       categoryId: form.categoryId,
       tagNames: form.tags,
       urls: form.url,
+      publicFlag: pendingPublicFlag,
     };
     try {
       await createArticle(request);
@@ -94,6 +96,11 @@ const ArticleEditPage = () => {
     } catch {
       setErrorOpen(true);
     }
+  };
+
+  const handleOpenPreview = (isPublic: boolean) => {
+    setPendingPublicFlag(isPublic);
+    setOpenPreview(true);
   };
 
   const handleMode = (_: unknown, value: "split" | "write" | "preview") => {
@@ -132,9 +139,15 @@ const ArticleEditPage = () => {
         <Box>
           <Button
             variant="contained"
-            onClick={handleSubmit(() => setOpenPreview(true))}
+            onClick={handleSubmit(() => handleOpenPreview(false))}
           >
-            記事を投稿
+            下書き保存
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleSubmit(() => handleOpenPreview(true))}
+          >
+            公開投稿
           </Button>
         </Box>
       </Box>
@@ -270,9 +283,9 @@ const ArticleEditPage = () => {
             sx={{
               flex: 1,
               minHeight: 0,
-              overflow: "hidden", // ← autoからhiddenに
-              display: "flex", // ← 追加
-              flexDirection: "column", // ← 追加
+              overflow: "hidden",
+              display: "flex",
+              flexDirection: "column",
             }}
             border={1}
           >

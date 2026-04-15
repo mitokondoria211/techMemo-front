@@ -17,7 +17,7 @@ import {
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { EditorView } from "@codemirror/view";
 import CodeMirror from "@uiw/react-codemirror";
 import { markdown } from "@codemirror/lang-markdown";
@@ -55,6 +55,7 @@ const ArticleUpdatePage = () => {
   const [openPreview, setOpenPreview] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
   const [errorOpen, setErrorOpen] = useState(false);
+  const pendingPublicFlagRef = useRef(false);
   const { handleSubmit, control, reset, setValue, formState } = useForm<
     z.input<typeof articleEditSchema>, // input: tags は string
     undefined,
@@ -82,6 +83,7 @@ const ArticleUpdatePage = () => {
         tags: article.tags.map((tag) => tag.name).join(", "),
         url: article.urls,
       });
+      pendingPublicFlagRef.current = article.publicFlag;
     }
   }, [article, reset]);
 
@@ -104,6 +106,7 @@ const ArticleUpdatePage = () => {
       categoryId: form.categoryId,
       tagNames: form.tags,
       urls: form.url,
+      publicFlag: pendingPublicFlagRef.current,
     };
     try {
       await updataArticle(Number(id), request);
