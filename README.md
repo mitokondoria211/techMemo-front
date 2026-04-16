@@ -59,7 +59,7 @@ Markdownで技術メモを投稿・管理できるエンジニア向けのナレ
 
 ### ログイン / 新規登録
 
-<div style="display: flex; gap: 16px;">
+<div>
 
 ![ログイン](techmemoapp/docs/images/login.png)
 ![新規登録](techmemoapp/docs/images/signup.png)
