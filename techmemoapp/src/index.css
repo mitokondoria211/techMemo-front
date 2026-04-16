@@ -1,30 +1,25 @@
+/* ============================================
+   Tailwind v4 インポート
+   @import "tailwindcss" で theme/base/utilities
+   すべてが含まれるため、個別インポートは不要
+   ============================================ */
 @import "tailwindcss";
 
-@layer theme, base, components, utilities;
-
-/* themeだけ読み込む */
-@import "tailwindcss/theme";
-
-/* utilitiesだけ読み込む */
-@import "tailwindcss/utilities";
-
 @layer components {
-  /* Markdown container */
-
-  /* 見出し */
-
-  .cm-editor {
-    border: none !important;
-  }
-
-  .cm-editor.cm-focused {
-    outline: none !important;
-  }
+  /* ============================================
+     CodeMirror エディタ
+     ============================================ */
 
   .cm-editor {
     height: 100%;
     display: flex;
     flex-direction: column;
+    border: none !important;
+    outline: none !important; /* cm-focused も同じ outline: none のためまとめる */
+  }
+
+  .cm-editor.cm-focused {
+    outline: none !important;
   }
 
   .cm-scroller {
@@ -32,40 +27,65 @@
     overflow: auto;
   }
 
+  /* ============================================
+     Markdown コンテナ
+     ============================================ */
+
+  .markdown {
+    font-size: 16px;
+    line-height: 1.8;
+    padding-top: 10px;
+    word-break: break-word;
+  }
+
+  /* ============================================
+     見出し
+     h1 > h2 > h3 > h4 の階層順にサイズを設定
+     ============================================ */
+
   .markdown h1 {
-    font-size: 1.5rem; /* h2と同じサイズ */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 1.8rem;
+    margin-bottom: 1rem;
     border-left: 3px solid #7f77dd;
     padding-left: 0.75rem;
-    border-bottom: none;
   }
 
   .markdown h2 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    margin-top: 1.8rem;
+    margin-top: 1.5rem;
     margin-bottom: 0.8rem;
   }
 
   .markdown h3 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
   }
 
   .markdown h4 {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-top: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
   }
 
-  /* 段落 */
+  /* ============================================
+     段落
+     ============================================ */
 
   .markdown p {
     margin-top: 0.8rem;
     margin-bottom: 0.8rem;
+    word-break: break-word;
   }
 
-  /* リスト */
+  /* ============================================
+     リスト
+     ============================================ */
 
   .markdown ul {
     list-style: disc;
@@ -81,15 +101,20 @@
 
   .markdown li {
     margin: 0.3rem 0;
+    word-break: break-word;
   }
 
-  /* チェックリスト */
+  /* ============================================
+     チェックリスト
+     ============================================ */
 
   .markdown input[type="checkbox"] {
     margin-right: 0.4rem;
   }
 
-  /* 引用 */
+  /* ============================================
+     引用
+     ============================================ */
 
   .markdown blockquote {
     border-left: 4px solid #3b82f6;
@@ -99,7 +124,9 @@
     margin: 1rem 0;
   }
 
-  /* リンク */
+  /* ============================================
+     リンク
+     ============================================ */
 
   .markdown a {
     color: #2563eb;
@@ -110,7 +137,9 @@
     color: #1d4ed8;
   }
 
-  /* 画像 */
+  /* ============================================
+     画像
+     ============================================ */
 
   .markdown img {
     max-width: 100%;
@@ -118,16 +147,24 @@
     margin: 1rem 0;
   }
 
-  /* コード */
+  /* ============================================
+     インラインコード
+     ============================================ */
 
   .markdown code {
     background: #f3f4f6;
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 0.9rem;
+    word-break: break-word;
   }
 
-  /* コードブロック */
+  /* ============================================
+     コードブロック
+     pre > code はインラインスタイルをリセット
+     white-space: pre のみにして横スクロールを有効化
+     （pre-wrap との矛盾を解消）
+     ============================================ */
 
   .markdown pre {
     background: #1e293b;
@@ -135,15 +172,21 @@
     padding: 16px;
     border-radius: 8px;
     overflow-x: auto;
+    white-space: pre; /* pre-wrap との矛盾を解消。横スクロールで対応 */
     margin: 1rem 0;
   }
 
   .markdown pre code {
     background: transparent;
     padding: 0;
+    font-size: inherit;
+    word-break: normal; /* コードブロック内は折り返しさせない */
+    white-space: inherit;
   }
 
-  /* テーブル */
+  /* ============================================
+     テーブル
+     ============================================ */
 
   .markdown table {
     width: 100%;
@@ -162,36 +205,13 @@
     background: #f9fafb;
   }
 
-  /* 区切り線 */
+  /* ============================================
+     区切り線
+     ============================================ */
 
   .markdown hr {
     border: none;
     border-top: 1px solid #e5e7eb;
     margin: 2rem 0;
-  }
-
-  .markdown {
-    font-size: 16px;
-    line-height: 1.8;
-    padding-top: 10px;
-    word-break: break-word;
-  }
-
-  .markdown p {
-    word-break: break-word;
-  }
-
-  .markdown li {
-    word-break: break-word;
-  }
-
-  .markdown code {
-    word-break: break-word;
-  }
-
-  .markdown pre {
-    overflow-x: auto;
-    white-space: pre-wrap;
-    word-break: break-word;
   }
 }

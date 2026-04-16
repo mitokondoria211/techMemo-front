@@ -77,7 +77,7 @@ const Header = ({ user, toggleSidebar }: HeaderProps) => {
                 src="/logo.svg"
                 width={36}
                 height={36}
-                style={{ display: "block", transform: "translateY(2px)" }} // ← これも効く
+                style={{ display: "block", transform: "translateY(2px)" }}
               />
               StackMemo
             </Typography>
@@ -103,9 +103,6 @@ const Header = ({ user, toggleSidebar }: HeaderProps) => {
                       user.name.slice(0, 15) + "..."
                     : user.name}
                   </Typography>
-                  {/* <Typography color="white">
-                    hokkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-                  </Typography> */}
                   <Button
                     startIcon={<LogoutIcon />}
                     variant="contained"
@@ -132,40 +129,7 @@ const Header = ({ user, toggleSidebar }: HeaderProps) => {
             <List
               component="nav"
               sx={{ display: "flex", justifyContent: "flex-start" }}
-            >
-              {/* {setNavLinks.map((navLink) => (
-                  <ListItem disablePadding key={navLink.text}>
-                    <ListItemButton
-                      sx={{ textAlign: "center" }}
-                      component={Link}
-                      to={navLink.url}
-                    >
-                      <ListItemText
-                        primary={navLink.text}
-                        slotProps={{
-                          primary: {
-                            sx: {
-                              color: "primary.light",
-                            },
-                          },
-                        }}
-                      ></ListItemText>
-                    </ListItemButton>
-                  </ListItem>
-                ))} */}
-              {/* <ListItem disablePadding key={user?.name}>
-                <ListItemText
-                  primary={user}
-                  slotProps={{
-                    primary: {
-                      sx: {
-                        color: "primary.light",
-                      },
-                    },
-                  }}
-                ></ListItemText>
-              </ListItem> */}
-            </List>
+            ></List>
           </Box>
         </Box>
       </AppBar>

@@ -29,15 +29,13 @@ const BookmarkCreateDialog = ({
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting }, // ← isSubmitting を追加
+    formState: { errors, isSubmitting },
     reset,
   } = useForm<BookmarkCreateForm>({
     resolver: zodResolver(bookmarkCreateSchema),
   });
-  // const [successOpen, setSuccessOpen] = useState(false);
-  // const [errorOpen, setErrorOpen] = useState(false);
   const handleClose = () => {
-    reset(); // ← ダイアログを閉じる時にフォームをリセット
+    reset();
     onClose();
   };
   return (

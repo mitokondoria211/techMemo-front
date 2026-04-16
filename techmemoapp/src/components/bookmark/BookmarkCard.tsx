@@ -99,9 +99,6 @@ const BookmarkCard = ({ bookmark, onUpdated }: BookmarkCardProps) => {
           onClose={() => setDeleteOpen(false)}
           onSubmit={handleDelete}
         />
-        {/* <CardContent>
-          
-        </CardContent> */}
       </Card>
     </Paper>
   );

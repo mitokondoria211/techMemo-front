@@ -93,7 +93,6 @@ const ArticleDetailPage = () => {
             <Typography
               variant="body1"
               sx={{
-                // lineHeight: 1.9,
                 whiteSpace: "pre-wrap",
               }}
               className="markdown"

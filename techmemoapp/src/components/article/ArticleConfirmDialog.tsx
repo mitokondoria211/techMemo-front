@@ -36,6 +36,7 @@ type ArticleConfirmDialogProps = {
     undefined,
     z.output<typeof articleEditSchema>
   >;
+  isPublic: boolean;
 };
 
 const ArticleConfirmDialog = ({
@@ -43,6 +44,7 @@ const ArticleConfirmDialog = ({
   onClose,
   onSubmit,
   control,
+  isPublic,
 }: ArticleConfirmDialogProps) => {
   const form = useWatch({ control });
   const { user } = useAuth();
@@ -58,7 +60,9 @@ const ArticleConfirmDialog = ({
     : (form.tags ?? []);
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
-      <DialogTitle>この内容で投稿しますか？</DialogTitle>
+      <DialogTitle>
+        {isPublic ? "公開投稿の確認" : "下書き保存の確認"}
+      </DialogTitle>
 
       <DialogContent>
         <Card>

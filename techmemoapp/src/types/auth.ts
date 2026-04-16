@@ -27,6 +27,7 @@ export interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean | null;
   login: ({ email, password }: LoginType) => Promise<void>;
+  guestLogin: () => Promise<void>;
   logout: () => void;
   signUp: ({ name, email, password }: RegisterType) => Promise<void>;
 }

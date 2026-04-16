@@ -1,17 +1,3 @@
-// export interface ArticleResponse {
-//   id: number;
-//   title: string;
-//   content: string;
-//   category: {
-//     name: string;
-//   };
-//   user: UserResponse;
-//   tags: Tag[];
-//   urls: Url[];
-//   createdAt: string;
-//   updatedAt: string;
-// }
-
 export interface Tag {
   id: number;
   name: string;

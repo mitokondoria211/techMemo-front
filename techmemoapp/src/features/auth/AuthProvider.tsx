@@ -44,6 +44,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem("accessToken", res.accessToken);
   };
 
+  const guestLogin = async () => {
+    await login({ email: "guest@example.com", password: "password" });
+  };
+
   const logout = async () => {
     setUser(null);
     setAccessToken(null);
@@ -64,6 +68,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         user,
         isAuthenticated: loading ? null : !!accessToken,
         login,
+        guestLogin,
         logout,
         signUp,
       }}

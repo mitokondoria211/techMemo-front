@@ -42,8 +42,7 @@ const BookmarkUpdateDialog = ({
       memo: bookmark.memo,
     },
   });
-  // const [successOpen, setSuccessOpen] = useState(false);
-  // const [errorOpen, setErrorOpen] = useState(false);
+
   const handleClose = () => {
     reset(); // ← ダイアログを閉じる時にフォームをリセット
     onClose();

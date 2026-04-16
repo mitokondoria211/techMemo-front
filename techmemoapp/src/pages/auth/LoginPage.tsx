@@ -25,7 +25,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const LoginPage = () => {
-  const { login } = useAuth();
+  const { login, guestLogin } = useAuth();
   const navigate = useNavigate();
 
   const {
@@ -58,6 +58,11 @@ const LoginPage = () => {
         message: "認証に失敗しました。",
       });
     }
+  };
+
+  const handleGuestLogin = async () => {
+    await guestLogin();
+    navigate("/");
   };
 
   // マウスダウンでフォーカスが外れるのを防ぐ（よくある小技）
@@ -194,6 +199,7 @@ const LoginPage = () => {
                 ログインなしでサイトを見る
               </Link>
             </Typography>
+            <Button onClick={handleGuestLogin}>ゲストログイン</Button>
           </Stack>
         </Paper>
       </Box>

@@ -31,6 +31,7 @@ export const articleApi = {
         tagId: params.tagId,
         page: params.page ?? 0,
         size: params.size ?? 10,
+        sort: params.sort ?? "createdAt,desc",
       },
     }),
   getMyRecent: () => privateApi.get<ArticleResponse[]>("/articles/me/recent"),

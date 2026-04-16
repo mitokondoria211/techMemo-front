@@ -12,12 +12,13 @@ import {
   MenuItem,
   Select,
   Snackbar,
+  Stack,
   TextField,
   ToggleButton,
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { EditorView } from "@codemirror/view";
 import CodeMirror from "@uiw/react-codemirror";
 import { markdown } from "@codemirror/lang-markdown";
@@ -45,7 +46,6 @@ import { useUnsavedChangesWarning } from "../../hooks/useUnsavedChangesWarning";
 import { useBeforeUnload } from "../../hooks/useBeforeUnload";
 
 const ArticleUpdatePage = () => {
-  // const [tagListText, setTagListText] = useState("");
   const { id } = useParams();
   const { article, updataArticle } = useArticleDetail(Number(id));
 
@@ -55,7 +55,6 @@ const ArticleUpdatePage = () => {
   const [openPreview, setOpenPreview] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
   const [errorOpen, setErrorOpen] = useState(false);
-  const pendingPublicFlagRef = useRef(false);
   const { handleSubmit, control, reset, setValue, formState } = useForm<
     z.input<typeof articleEditSchema>, // input: tags は string
     undefined,
@@ -83,12 +82,11 @@ const ArticleUpdatePage = () => {
         tags: article.tags.map((tag) => tag.name).join(", "),
         url: article.urls,
       });
-      pendingPublicFlagRef.current = article.publicFlag;
     }
   }, [article, reset]);
 
   const urls = useWatch({ control, name: "url" }) ?? [];
-
+  const [pendingPublicFlag, setPendingPublicFlag] = useState(false);
   const initTitleMessage = "タイトルは4文字以上50字以内で入力してください";
   const initArticleMessage = "# 記事を書いてみましょう";
   const initTagListMessage =
@@ -106,7 +104,7 @@ const ArticleUpdatePage = () => {
       categoryId: form.categoryId,
       tagNames: form.tags,
       urls: form.url,
-      publicFlag: pendingPublicFlagRef.current,
+      publicFlag: article?.publicFlag ?? false,
     };
     try {
       await updataArticle(Number(id), request);
@@ -114,6 +112,11 @@ const ArticleUpdatePage = () => {
     } catch {
       setErrorOpen(true);
     }
+  };
+
+  const handleOpenPreview = (isPublic: boolean) => {
+    setPendingPublicFlag(isPublic);
+    setOpenPreview(true);
   };
 
   const handleMode = (_: unknown, value: "split" | "write" | "preview") => {
@@ -149,14 +152,20 @@ const ArticleUpdatePage = () => {
         <Typography variant="h5" fontWeight={700} sx={{ flexShrink: 0 }}>
           記事投稿
         </Typography>
-        <Box>
+        <Stack direction="row" gap={2}>
           <Button
             variant="contained"
-            onClick={handleSubmit(() => setOpenPreview(true))}
+            onClick={handleSubmit(() => handleOpenPreview(false))}
           >
-            記事を投稿
+            下書き保存
           </Button>
-        </Box>
+          <Button
+            variant="contained"
+            onClick={handleSubmit(() => handleOpenPreview(true))}
+          >
+            公開投稿
+          </Button>
+        </Stack>
       </Box>
       <Snackbar
         open={successOpen}
@@ -290,9 +299,9 @@ const ArticleUpdatePage = () => {
             sx={{
               flex: 1,
               minHeight: 0,
-              overflow: "hidden", // ← autoからhiddenに
-              display: "flex", // ← 追加
-              flexDirection: "column", // ← 追加
+              overflow: "hidden",
+              display: "flex",
+              flexDirection: "column",
             }}
             border={1}
           >
@@ -312,12 +321,10 @@ const ArticleUpdatePage = () => {
                   }}
                   style={{
                     flex: 1,
-                    // height: "100%",
                     overflow: "hidden",
-                    // ← autoからhiddenに
                     display: "flex",
                     flexDirection: "column",
-                  }} // ← height="100%"をpropsではなくstyleで
+                  }}
                 />
               )}
             />
@@ -347,6 +354,7 @@ const ArticleUpdatePage = () => {
         onClose={() => setOpenPreview(false)}
         onSubmit={handleSubmit(onSubmit)}
         control={control}
+        isPublic={pendingPublicFlag}
       />
       <ArticleAddUrlDialog
         open={openUrlModal}

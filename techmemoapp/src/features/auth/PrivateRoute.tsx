@@ -4,7 +4,7 @@ import { useAuth } from "./useAuth";
 function PrivateRoute() {
   const { isAuthenticated } = useAuth();
 
-  // 👇 ロード中
+  // ロード中
   if (isAuthenticated === null) return <div>Loading...</div>;
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;

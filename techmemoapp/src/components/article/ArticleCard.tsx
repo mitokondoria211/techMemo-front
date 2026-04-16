@@ -97,11 +97,11 @@ const ArticleCard = ({
                 onCategoryClick?.(article.category.id);
               }}
               sx={{
-                alignSelf: "flex-start", // これで左寄せ（横幅いっぱいにならない）
-                backgroundColor: "#E6FFFA", // 以前提案した淡い青緑
-                color: "#2C7A7B", // 濃い青緑
+                alignSelf: "flex-start",
+                backgroundColor: "#E6FFFA",
+                color: "#2C7A7B",
                 fontWeight: "bold",
-                borderRadius: "4px", // 少し角を立たせると知的な印象に
+                borderRadius: "4px",
                 fontSize: "0.75rem",
               }}
             />
@@ -197,7 +197,7 @@ const ArticleCard = ({
 
                   <Button
                     size="small"
-                    color="secondary" // またはデフォルトのまま
+                    color="secondary"
                     variant="text"
                     startIcon={<EditIcon />}
                     onClick={(e) => {
@@ -212,7 +212,7 @@ const ArticleCard = ({
                   <Button
                     size="small"
                     color="error"
-                    variant="outlined" // または "text" に変更
+                    variant="outlined"
                     startIcon={<DeleteIcon />}
                     onClick={(e) => {
                       e.stopPropagation();

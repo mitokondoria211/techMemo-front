@@ -12,6 +12,7 @@ import {
   MenuItem,
   Select,
   Snackbar,
+  Stack,
   TextField,
   ToggleButton,
   ToggleButtonGroup,
@@ -136,7 +137,7 @@ const ArticleEditPage = () => {
         <Typography variant="h5" fontWeight={700} sx={{ flexShrink: 0 }}>
           記事投稿
         </Typography>
-        <Box>
+        <Stack direction="row" gap={2}>
           <Button
             variant="contained"
             onClick={handleSubmit(() => handleOpenPreview(false))}
@@ -149,7 +150,7 @@ const ArticleEditPage = () => {
           >
             公開投稿
           </Button>
-        </Box>
+        </Stack>
       </Box>
       <Snackbar
         open={successOpen}
@@ -340,6 +341,7 @@ const ArticleEditPage = () => {
         onClose={() => setOpenPreview(false)}
         onSubmit={handleSubmit(onSubmit)}
         control={control}
+        isPublic={pendingPublicFlag}
       />
       <ArticleAddUrlDialog
         open={openUrlModal}
