@@ -45,7 +45,7 @@ Markdownで技術メモを投稿・管理できるエンジニア向けのナレ
 ### My記事
 自分の記事一覧では公開/非公開の切り替え・編集・削除を一覧から操作できます。
 
-![My記事](techmemoapp/docs/images/my-articles.png)
+![My記事](techmemoapp/docs/images/myArticles.png)
 
 ### ブックマーク
 よく参照するサイトをタイトル・URL・メモ付きで登録・管理できます。
@@ -55,7 +55,7 @@ Markdownで技術メモを投稿・管理できるエンジニア向けのナレ
 ### マイページ
 投稿数・下書き数・ブックマーク数の集計と最近の投稿を確認できます。
 
-![マイページ](techmemoapp/docs/images/dashboard.png)
+![マイページ](techmemoapp/docs/images/mypage.png)
 
 ### ログイン / 新規登録
 
