@@ -30,6 +30,42 @@
 Markdownで技術メモを投稿・管理できるエンジニア向けのナレッジ共有アプリです。
 ログインなしでも公開記事の閲覧が可能です。
 
+## スクリーンショット
+
+### 記事一覧
+キーワード・カテゴリ・タグ・並び替えで絞り込めます。
+
+![記事一覧](docs/images/article-list.png)
+
+### 記事投稿
+左がエディタ、右がプレビューのsplitモード。write / previewへの切り替えも可能です。
+
+![記事投稿](docs/images/article-edit.png)
+
+### My記事
+自分の記事一覧では公開/非公開の切り替え・編集・削除を一覧から操作できます。
+
+![My記事](docs/images/my-articles.png)
+
+### ブックマーク
+よく参照するサイトをタイトル・URL・メモ付きで登録・管理できます。
+
+![ブックマーク](docs/images/bookmark.png)
+
+### マイページ
+投稿数・下書き数・ブックマーク数の集計と最近の投稿を確認できます。
+
+![マイページ](docs/images/dashboard.png)
+
+### ログイン / 新規登録
+
+<div style="display: flex; gap: 16px;">
+
+![ログイン](docs/images/login.png)
+![新規登録](docs/images/signup.png)
+
+</div>
+
 ### ゲストアカウント
 
 動作確認用のアカウントを用意しています。
