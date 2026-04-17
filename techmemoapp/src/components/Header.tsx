@@ -79,7 +79,7 @@ const Header = ({ user, toggleSidebar }: HeaderProps) => {
                 height={36}
                 style={{ display: "block", transform: "translateY(2px)" }}
               />
-              StackMemo
+              TechMemo
             </Typography>
           </Box>
           <Box sx={{ px: 3, color: "white" }}>
