@@ -1,6 +1,6 @@
-# StackMemo フロントエンド
+# TechMemo フロントエンド
 
-エンジニア向けの技術メモ共有アプリ「StackMemo」のフロントエンドリポジトリです。
+エンジニア向けの技術メモ共有アプリ「TechMemo」のフロントエンドリポジトリです。
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)
